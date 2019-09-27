@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Timeclock v1</h1>
+
+SSID: <input type="text" id="SSID_input" value="">
+<button onclick="SSID_button_function()">Enter</button>
+<p id="SSID_display"></p>
+
+  
+<form name="submit-to-google-sheet">
+  <input name="email" type="email" placeholder="Email" required>
+  <button type="submit">Send</button>
+</form>
+  
+<script>
+function SSID_button_function() {
+  var SSID = document.getElementById("SSID_input").value;
+  document.getElementById("SSID_display").innerHTML = SSID;
+}
+</script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyLM0kKJaeoDkBudNT7bYv9DMKgHqllrfsPCWMM2llQVGZiGaT-/exec'
+  const form = document.forms['submit-to-google-sheet']
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>  
+</body>
+</html>
