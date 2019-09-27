@@ -2,12 +2,19 @@
 <html>
 <head>
 <style>
+.container{
+  height: 600px;
+  /* border: 3px solid black; */
+}
 .center {
-  margin: auto;
-  width: 550px;
-  text-align: right
-
-
+  /* border: 3px solid black; */
+  text-align: right;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 550px
 }
 img{
   float: left;
@@ -24,24 +31,26 @@ p.serif2 {
   font-size: 20px;
   margin:0;
   padding:0;
-  color: white
+  color: white;
 }
 body{
-  background-color: rgb(9, 9, 50)
+  background-color: rgb(9, 9, 50);
 }
 </style>
 </head>
 <body>
 
-<div class="center">
-  <img src="giphy3.gif" style="width:200px">;
-  <p class="serif">Calaxy Canoe Clock</p>
-  <p class="serif2">updated as of 9/27, 4:42am </p>
-  <form name="submit-to-google-sheet">
-    <input name="email" type="text" placeholder="Name" required><br>
-    <input name="job" type="text" placeholder="Job" required><br>
-    <button type="submit" onclick="resetForm">Clock in/out</button>
-  </form>
+<div class="container">
+  <div class="center">
+    <img src="giphy3.gif" style="width:200px">
+    <p class="serif">Calaxy Canoe Clock</p>
+    <p class="serif2">updated as of 9/27, 4:42am </p>
+    <form name="submit-to-google-sheet">
+      <input name="email" type="text" placeholder="Name" required><br>
+      <input name="job" type="text" placeholder="Job" required><br>
+      <button type="submit" onclick="resetForm">Clock in/out</button>
+    </form>
+  </div>
 </div>
 
 <script>
