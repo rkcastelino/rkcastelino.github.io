@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 <body>
+<style>
+.center {
+  margin: auto;
+}
+</style>
 
+<div class="center">
 <h1>Timeclock v1</h1>
 
-  
 <form name="submit-to-google-sheet">
   <input name="email" type="email" placeholder="Email" required>
   <button type="submit">Send</button>
 </form>
-  
+</div>
+
+
 <script>
 function SSID_button_function() {
   var SSID = document.getElementById("SSID_input").value;
@@ -26,6 +33,6 @@ function SSID_button_function() {
       .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message))
   })
-</script>  
+</script>
 </body>
 </html>
