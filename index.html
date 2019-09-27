@@ -44,7 +44,7 @@ body{
   <div class="center">
     <img src="giphy3.gif" style="width:200px">
     <p class="serif">Calaxy Canoe Clock</p>
-    <p class="serif2">updated as of 9/27, 5:52am </p>
+    <p class="serif2">updated as of 9/27, 5:54am </p>
     <form name="submit-to-google-sheet">
       <input name="email" type="text" placeholder="Name" required><br>
       <input name="job" type="text" placeholder="Job" required><br>
@@ -63,6 +63,10 @@ body{
       .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message))
   })
+
+  function resetForm(){
+    document.getElementById('submit-to-google-sheet').reset();
+  }
 </script>
 
 </body>
