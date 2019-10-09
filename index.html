@@ -44,19 +44,22 @@ body{
 
 <div class="container">
   <div class="center">
+    <form>
     <img src="giphy3.gif" style="width:200px">
     <p class="serif">Calaxy Clock</p>
-    <p class="serif2">updated as of 9/29, 12:46am </p>
+    <p class="serif2">updated as of 10/9, 12:38am </p>
+    </form>
     <form name="submit-to-google-sheet">
-      <input name="name" type="text" placeholder="Name" required><br>
-      <input name="job" type="text" placeholder="Job" required><br>
-      <button type="submit" onclick="resetForm()">Clock in/out</button>
+      <input id="name" name="name" type="text" placeholder="Name" required><br>
+      <input id="job" name="job" type="text" placeholder="Job" required><br>
+      <input id="in/out" name="in/out" type="text" placeholder="In or out?" required><br>
+      <button type="submit" onclick="resetFormPls()" form="submit-to-google-sheet">Clock in/out</button>
     </form>
   </div>
 </div>
 
 <script>
-  function resetForm(){
+  function resetFormPls(){
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyLM0kKJaeoDkBudNT7bYv9DMKgHqllrfsPCWMM2llQVGZiGaT-/exec'
     const form = document.forms['submit-to-google-sheet']
 
@@ -64,7 +67,10 @@ body{
       .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message))
 
-    document.getElementById("submit-to-google-sheet").reset();
+    alert("Clocked " + document.getElementById("in/out").value)
+    document.getElementById("name").value = ""
+    document.getElementById("job").value = ""
+    document.getElementById("in/out").value = ""
   }
 </script>
 
