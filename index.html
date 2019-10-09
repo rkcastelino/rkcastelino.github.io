@@ -47,18 +47,31 @@ body{
     <form>
     <img src="giphy3.gif" style="width:200px">
     <p class="serif">Calaxy Clock</p>
-    <p class="serif2">updated as of 10/9, 12:38am </p>
-    <br>
+    <p class="serif2">software updated as of 10/9, 9:41am </p>
     </form>
+    <br>
     <form name="submit-to-google-sheet">
-      <input id="name" name="name" type="text" placeholder="Name" required><br>
-      <input id="job" name="job" type="text" placeholder="Job" required><br>
+      <input id="name" name="name" type="text" placeholder="Name" required size=25px><br>
+      <select id="job selection">
+        <option value="Laborer/Technician">Laborer/Technician</option>
+        <option value="Principle Design Engineer">Principle Design Engineer</option>
+        <option value="Design Manager">Design Manager</option>
+        <option value="Project Construction Manager">Project Construction Manager</option>
+        <option value="Construction Superintendent">Construction Superintendent</option>
+        <option value="Project Design Engineer">Project Design Engineer</option>
+        <option value="Quality Manager">Quality Manager</option>
+        <option value="Graduate Field Engineer (EIT)">Graduate Field Engineer (EIT)</option>
+        <option value="Technician/Drafter">Technician/Drafter</option>
+        <option value="Clerk/Office Admin">Clerk/Office Admin</option>
+      </select><br>
       <p class="serif2">
       <input type="radio" name="in/out radio" id="in radio" value="IN">In
       <input type="radio" name="in/out radio" id="out radio" value="OUT">Out
       <br></p>
-      <input id="in/out" name="in/out" type="hidden"><br>
+      <br>
       <button type="submit" onclick="resetFormPls()" form="submit-to-google-sheet">Clock in/out</button>
+      <input id="job" name="job" type="hidden" required><br>
+      <input id="in/out" name="in/out" type="hidden"><br>
     </form>
   </div>
 </div>
@@ -66,15 +79,16 @@ body{
 <script>
   function resetFormPls(){
     if (document.getElementById("in radio").checked){
-        var radio_val = "In"
-    }
+        var radio_val = "In"}
     else if (document.getElementById("out radio").checked){
-        var radio_val = "Out"
-    }
+        var radio_val = "Out"}
     document.getElementById("in/out").value = radio_val
+
+    var job_selected = document.getElementById("job selection").value
+    document.getElementById("job").value = job_selected
+
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyLM0kKJaeoDkBudNT7bYv9DMKgHqllrfsPCWMM2llQVGZiGaT-/exec'
     const form = document.forms['submit-to-google-sheet']
-
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
       .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message))
@@ -85,6 +99,7 @@ body{
     document.getElementById("in/out").value = ""
     document.getElementById("in radio").checked = false
     document.getElementById("out radio").checked = false
+    document.getElementById("job selection").value = "Laborer/Technician"
   }
 </script>
 
