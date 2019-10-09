@@ -50,21 +50,23 @@ body{
     <form name="submit-to-google-sheet">
       <input name="name" type="text" placeholder="Name" required><br>
       <input name="job" type="text" placeholder="Job" required><br>
-      <button type="submit" onclick="resetForm">Clock in/out</button>
+      <button type="submit" onclick="resetForm()">Clock in/out</button>
     </form>
   </div>
 </div>
 
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbyLM0kKJaeoDkBudNT7bYv9DMKgHqllrfsPCWMM2llQVGZiGaT-/exec'
-  const form = document.forms['submit-to-google-sheet']
+  function resetForm(){
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyLM0kKJaeoDkBudNT7bYv9DMKgHqllrfsPCWMM2llQVGZiGaT-/exec'
+    const form = document.forms['submit-to-google-sheet']
 
-  form.addEventListener('submit', e => {
-    e.preventDefault()
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
       .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message))
-  })
+
+    document.getElementById("submit-to-google-sheet").reset();
+  }
 </script>
+
 </body>
 </html>
