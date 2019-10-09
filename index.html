@@ -53,6 +53,10 @@ body{
     <form name="submit-to-google-sheet">
       <input id="name" name="name" type="text" placeholder="Name" required><br>
       <input id="job" name="job" type="text" placeholder="Job" required><br>
+      <p class="serif2">
+      <input type="radio" name="in/out radio" id="in radio" value="IN">In
+      <input type="radio" name="in/out radio" id="out radio" value="OUT">Out
+      <br></p>
       <input id="in/out" name="in/out" type="hidden"><br>
       <button type="submit" onclick="resetFormPls()" form="submit-to-google-sheet">Clock in/out</button>
     </form>
@@ -61,20 +65,26 @@ body{
 
 <script>
   function resetFormPls(){
+    if (document.getElementById("in radio").checked){
+        var radio_val = "In"
+    }
+    else if (document.getElementById("out radio").checked){
+        var radio_val = "Out"
+    }
+    document.getElementById("in/out").value = radio_val
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyLM0kKJaeoDkBudNT7bYv9DMKgHqllrfsPCWMM2llQVGZiGaT-/exec'
     const form = document.forms['submit-to-google-sheet']
 
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
       .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message))
-    document.getElementByID("in/out").value = "x"
-    
-    //alert("Clocked " + document.getElementById("in/out").value)
-    //alert(document.getElementById("in/out").value)
-    alert()
+
+    alert("Clocked " + document.getElementById("in/out").value)
     document.getElementById("name").value = ""
     document.getElementById("job").value = ""
     document.getElementById("in/out").value = ""
+    document.getElementById("in radio").checked = false
+    document.getElementById("out radio").checked = false
   }
 </script>
 
