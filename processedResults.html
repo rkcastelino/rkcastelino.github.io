@@ -4,7 +4,8 @@
 <title>Hour Analysis</title>
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="processedResults.css">
-<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="processedResults.js"></script>
+<script type="text/javascript" src="d3.min.js"></script>
 </head>
 <body>
 
@@ -19,7 +20,7 @@
       <br>
 
       <div class="center_form">
-        <form name="submit-to-google-sheet">
+        <form name="">
           <input id="name" name="name" type="text" placeholder="Name" required size=25px><br>
           <select id="job selection" >
             <option value="Laborer/Technician">Laborer/Technician</option>
@@ -33,16 +34,16 @@
             <option value="Technician/Drafter">Technician/Drafter</option>
             <option value="Clerk/Office Admin">Clerk/Office Admin</option>
           </select><br>
-          <p class="serif2">
-          <input type="radio" name="in/out radio" id="in radio" value="IN">In
-          <input type="radio" name="in/out radio" id="out radio" value="OUT">Out
-          <br></p>
           <br>
-          <button type="submit" onclick="resetFormPls()" form="submit-to-google-sheet">Clock in/out</button>
+          <button type="submit" onclick="graph_generator()" form="">Generate graph</button>
           <input id="job" name="job" type="hidden" required><br>
           <input id="in/out" name="in/out" type="hidden"><br>
         </form>
       </div>
+    </div>
+
+    <div id="my_dataviz" class="center_for_graph">
+      testing
     </div>
 
 </body>
