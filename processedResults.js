@@ -14,11 +14,11 @@ function graph_generator(){
             "translate(" + margin.left + "," + margin.top + ")");
 
   //Read the data
-  d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
+  d3.csv("out.csv",
 
     // When reading the csv, I must format variables:
     function(d){
-      return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
+      return { date : d3.timeParse("%d/%m/%Y")(d.date), value : d.value }
     },
 
     // Now I can use this dataset:
