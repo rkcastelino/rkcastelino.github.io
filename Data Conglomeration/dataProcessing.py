@@ -1,0 +1,84 @@
+import csv
+from datetime import datetime
+import sys
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import pdb
+
+# Gspread setup
+scope = ['https://spreadsheets.google.com/feeds',
+        'https://www.googleapis.com/auth/drive']
+credentials = ServiceAccountCredentials.from_json_keyfile_name('Calaxy Clock-80a46774c131.json', scope)
+gc = gspread.authorize(credentials)
+wks1 = gc.open_by_url('https://docs.google.com/spreadsheets/d/1oTscuN5JqshsnnwVKfyHL8WXnBAVFeMgwlHb_N21AQM/edit#gid=51388084').worksheet('raw data')
+wks2 = gc.open_by_url('https://docs.google.com/spreadsheets/d/1oTscuN5JqshsnnwVKfyHL8WXnBAVFeMgwlHb_N21AQM/edit#gid=51388084').worksheet('processed stamps')
+
+raw_timestamps = wks1.get_all_values()
+raw_timestamps = raw_timestamps[1:]
+
+for timestamp in raw_timestamps:
+    time_and_date = timestamp[0].split()
+    timestamp[0] = time_and_date[0]
+    timestamp.append(time_and_date[1])
+
+problematic_timecard = any('' in sublists for sublists in raw_timestamps)
+if problematic_timecard:
+    print('Timecard has blank spot')
+    sys.exit()
+if raw_timestamps[0][3] == "Out":
+    print('First timestamp is out')
+    sys.exit()
+
+for current_entry_index,timestamp in enumerate(raw_timestamps):
+    name = timestamp[1]
+    found_another_name = 0;
+    incremented_next_entry = 0;
+    if timestamp[3] == "Out":
+        print(name + ' didnt clock in before' + str(timestamp))
+        sys.exit()
+    for next_entry_index, otherstamps in enumerate(raw_timestamps[current_entry_index+1:]):
+        if found_another_name == 0:
+            try:
+                otherstamps.index(name);
+            except:
+                continue
+            found_another_name = 1;
+        else:
+            incremented_next_entry = 1;
+            break
+    if incremented_next_entry == 0:
+        next_entry_index += 1
+    if found_another_name == 0:
+        print(name + ' didnt clock out after' + str(timestamp))
+        sys.exit()
+    next_entry_index = next_entry_index + current_entry_index
+    if next_entry_index > len(raw_timestamps):
+        continue
+    if raw_timestamps[next_entry_index][3] != "Out":
+        print(name + ' didnt clock out after' + str(timestamp))
+        sys.exit()
+
+    timestamp[3] = timestamp[4]
+    timestamp.pop(4)
+    timestamp.append(raw_timestamps[next_entry_index][4])
+    raw_timestamps.pop(next_entry_index)
+
+    timestamp.append((datetime.strptime(timestamp[4], '%H:%M:%S')-datetime.strptime(timestamp[3], '%H:%M:%S')).total_seconds()/3600)
+    timestamp[5] = abs(round(timestamp[5]*4)/4)
+    #NEED TO FIX PROGRAM SO DON"T NEED ABS
+
+with open("out.csv", "w", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerows(raw_timestamps)
+
+range_string = "A2:F" + str(len(raw_timestamps)+1)
+cell_list = wks2.range(range_string)
+current_row = 0
+current_column = 0
+for cell in cell_list:
+    cell.value = raw_timestamps[current_row][current_column]
+    current_column +=1
+    if current_column == 6:
+        current_row +=1
+        current_column = 0
+wks2.update_cells(cell_list)

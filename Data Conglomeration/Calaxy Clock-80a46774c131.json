@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "calaxy-clock",
+  "private_key_id": "80a46774c1313635e642811b88c621666dfc2196",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDiNnAT0HG9Uo6d\ne4cS3Vw7eI860PbnOOwIc2i1crfZc4cQOIDQCoECJFRz1ilxfkiY9M+iG+ZHYUL0\nuhv6+pIxHM6gLRJAJb+LUIXs9hI+rTA5aqZSF8IWsRR9AbID/fttU6Y23Ak3bJBs\ncPaO3CCeGq5bjziMB2ei02pFZSmwo2/WPu+CqjvPdzdKlDc52FngKY8/fV9jvsfT\nx/K7U1zw5yLswQ2LWJr/8LnFzEtUeXGWnHfl+VdKBGtyJLJ0eTmfBdQLZDMpaTe9\nbFMco+q4XJjjL0t3FzoqQmeqt0KOKpQLig04JcydoCqWH/I4EzskNg1JI4dm5n3v\nGGcyYE29AgMBAAECgf9pGOQRwzBDGYIj/d1oHS46UP+oMHxGUmUrCSzJyvjQfVwk\nV8kkTJOSXcYby+HFxC4WHzI2LCGrAM92O6vrRZKthWChTDvkF8e95Ke4KoKzdOo/\nluMQgEm0x0yEPv/ppUOcXNaqZGRilPHLOl1+qjcFywCEyMd2t3ZXphm9PF7rTBBT\nEIuXmd0kQxgoiIw+uogzSsB2SxLiHKWBW+ChRqkT4EZsiWOIqa//TKrAceKWSogX\nvqjOVXGCiQwcpWbq2NgzvS2nYqO+TPKxoKOatkBYgX1QhTyvMSqsiaoKk/2t68jo\niDVKBMlIunhralQd4T20K3f2bG7gdTugQf9hCG8CgYEA+R0U2GHRAaBWZScR+iqH\nIikqgUhxH3ucrLC8tV0vfDWmFSlDDQlzdQVPzC1G+MEBdU/APfqvBnF2Kkfu8sLt\npHPpLWe1y6K81i1CIJlrSNhJX3DczTEqrCD0u6NMUNyzvwvHbs63EPHC00mBeWuN\nXV9Z1PMAzbvM29G818jjRL8CgYEA6HdKrUh8Y+4u6xU2aQPL2aUHUOkf11TG/Gxd\n8D6Erwy67dDqA4MwKLWQtVwTKsfP+kL3D0uT8aMhUs4STpuzWbfpvj0fKYRNHFcY\n8sjrmcmT2cPtX8VQJCP+XJb2UXPzvKerzH+376vC5JjdT1e7p2u1OAqQHc31Ctt+\nisBT4IMCgYEAzqXGLf1uoNe982kmq4xtzvOxM8/BL2mePU7bK+PiSTpDzJgO7Bij\n8zX1zRzeG+oXaJZAlemHGWQzrr0/RZhYBCy3CJhYoVUdKtoeWeaKrcHlk8uPDpQz\nntgzzBeZbha28Ms3o/7Ms7ypbhYy1mNWwFchsNnoF8IrHUpuSd52UQcCgYEAuWR5\nr9yBJ4kK7fyK2hFm/3o3bXWeKTK5RxJ9kF2rn5c9dPAJ0SdMvwqeD6UQvCuCWAoT\n0qTppen9Z3Zk70AJNuIPjeJc+dVDUfi8MtO94XX7bc5tftVzZn82Gk1iv+8DUU8/\nGeY5oPCQi5LF3MMRKyIg8kKqULqyVChcsPdVbVUCgYEA8dzIZU56LQVa8QqHNKwL\ny/e7n6laTfxayq4ktpxIvdO/pSPAsoAi4deVG1kGbnVbUA8NSZceEg3xrEA7dy0f\nf9J5jnE67sXRw7EBjd+vMPHnxjDvfz5Ai55thSBlvlPL8gb5PAo5gRWfi+cIq2IG\n2+/2b1fHkjRwpocW13S4NR4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "calaxy-clock@calaxy-clock.iam.gserviceaccount.com",
+  "client_id": "112695774770101498165",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/calaxy-clock%40calaxy-clock.iam.gserviceaccount.com"
+}

@@ -1,0 +1,15 @@
+date,name,job,intime,outtime,value
+10/1/2019,Mr. Rogers,Laborer/Technician,0:57:57,10:04:00,9.0
+10/1/2019,Bob Ross,Principle Design Engineer,2:05:47,11:57:52,9.75
+10/1/2019,Michal Marcheschi,Design Manager,2:33:21,2:50:19,0.25
+10/1/2019,Malala Yousafzai,Laborer/Technician,9:45:56,1:17:19,8.5
+10/1/2019,Bob Ross,Principle Design Engineer,13:27:48,13:30:11,0.0
+10/1/2019,Andrew Huang,Laborer/Technician,15:18:57,14:45:37,0.5
+10/1/2019,Mr. Rogers,Design Manager,16:23:15,14:43:28,1.75
+10/2/2019,Mr. Rogers,Laborer/Technician,15:36:43,9:52:15,5.75
+10/2/2019,Bob Ross,Design Manager,23:59:19,9:52:02,14.0
+10/3/2019,Michal Marcheschi,Principle Design Engineer,10:14:24,14:04:10,3.75
+10/3/2019,Malala Yousafzai,Laborer/Technician,10:33:14,2:22:27,8.25
+10/3/2019,Andrew Huang,Laborer/Technician,15:44:27,3:18:46,12.5
+10/9/2019,Bob Ross,Laborer/Technician,13:38:09,7:51:21,5.75
+10/11/2019,test,Laborer/Technician,17:13:44,18:13:44,1.0
