@@ -1,27 +1,23 @@
 .center {
   /* border: 3px solid black; */
   text-align: center;
-  position: absolute;
+  position: relative;
   top: 10%;
-  left: 19%;
-  -ms-transform: translate(0%, 0%);
-  transform: translate(0%, 0%);
+  left: 20%;
 }
 .center2 {
   /* border: 3px solid black; */
   text-align: center;
   position: absolute;
-  top: 33%;
-  left: 10%;
-  -ms-transform: translate(0%, 0%);
-  transform: translate(0%, 0%);
+  top: 10%;
+  left: 8%;
 }
 .center3 {
   /* border: 3px solid black; */
   text-align: center;
   position: absolute;
   top: 50%;
-  left: 13%;
+  left: 8%;
 }
 img{
   float: left;
