@@ -49,4 +49,5 @@ function graph_generator(){
         .y(function(d) { return y(d.value) })
         )
 
+})
 }
