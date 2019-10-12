@@ -45,7 +45,7 @@ body{
 <div class="container">
   <div class="center">
     <form>
-    <a href="https://www.google.com">
+    <a href="processedResults.html">
       <img src="giphy.gif" style="width:200px">
     </a>
     <p class="serif">Calaxy Clock</p>
@@ -92,7 +92,7 @@ body{
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyLM0kKJaeoDkBudNT7bYv9DMKgHqllrfsPCWMM2llQVGZiGaT-/exec'
     const form = document.forms['submit-to-google-sheet']
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.lsog('Success!', response))
+      .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message))
 
     alert("Clocked " + document.getElementById("in/out").value)
