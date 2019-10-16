@@ -4,6 +4,7 @@ import sys
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pdb
+import pandas as pd
 
 # Gspread setup
 scope = ['https://spreadsheets.google.com/feeds',
@@ -33,7 +34,7 @@ for current_entry_index,timestamp in enumerate(raw_timestamps):
     name = timestamp[1]
     found_another_name = 0;
     incremented_next_entry = 0;
-    if timestamp[3] == "Out":
+    if timestamp[4] == "Out":
         print(name + ' didnt clock in before' + str(timestamp))
         sys.exit()
     for next_entry_index, otherstamps in enumerate(raw_timestamps[current_entry_index+1:]):
@@ -54,31 +55,33 @@ for current_entry_index,timestamp in enumerate(raw_timestamps):
     next_entry_index = next_entry_index + current_entry_index
     if next_entry_index > len(raw_timestamps):
         continue
-    if raw_timestamps[next_entry_index][3] != "Out":
+    if raw_timestamps[next_entry_index][4] != "Out":
         print(name + ' didnt clock out after' + str(timestamp))
         sys.exit()
 
-    timestamp[3] = timestamp[4]
-    timestamp.pop(4)
-    timestamp.append(raw_timestamps[next_entry_index][4])
+    timestamp[4] = timestamp[5]
+    timestamp.pop(5)
+    timestamp.append(raw_timestamps[next_entry_index][5])
     raw_timestamps.pop(next_entry_index)
 
-    timestamp.append((datetime.strptime(timestamp[4], '%H:%M:%S')-datetime.strptime(timestamp[3], '%H:%M:%S')).total_seconds()/3600)
-    timestamp[5] = abs(round(timestamp[5]*4)/4)
+    timestamp.append((datetime.strptime(timestamp[5], '%H:%M:%S')-datetime.strptime(timestamp[4], '%H:%M:%S')).total_seconds()/3600)
+    timestamp[6] = abs(round(timestamp[6]*4)/4)
     #NEED TO FIX PROGRAM SO DON"T NEED ABS
 
+raw_timestamps_with_headers = [['date', 'user', 'job', 'division', 'in', 'out', 'hours']]
+raw_timestamps_with_headers.extend(raw_timestamps)
 with open("out.csv", "w", newline="") as f:
     writer = csv.writer(f)
-    writer.writerows(raw_timestamps)
+    writer.writerows(raw_timestamps_with_headers)
 
-range_string = "A2:F" + str(len(raw_timestamps)+1)
+range_string = "A2:G" + str(len(raw_timestamps)+1)
 cell_list = wks2.range(range_string)
 current_row = 0
 current_column = 0
 for cell in cell_list:
     cell.value = raw_timestamps[current_row][current_column]
     current_column +=1
-    if current_column == 6:
+    if current_column == 7:
         current_row +=1
         current_column = 0
 wks2.update_cells(cell_list)

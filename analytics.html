@@ -3,8 +3,8 @@
 <head>
 <title>Hour Analysis</title>
 <link rel="icon" href="/favicon.ico">
-<link rel="stylesheet" href="processedResults.css">
-<script type="text/javascript" src="processedResults.js"></script>
+<link rel="stylesheet" href="analytics.css">
+<script type="text/javascript" src="analytics.js"></script>
 <!-- <script type="text/javascript" src="d3.min.js"></script> -->
 <script src="https://d3js.org/d3.v4.js"></script>
 </head>
@@ -24,7 +24,7 @@
         <form name="">
           <input id="name" name="name" type="text" placeholder="Name" required size=25px><br>
           <select id="job selection" >
-            <option value="Laborer/Technician">Laborer/Technician</option>
+            <option value="Laborer-Technician">Laborer/Technician</option>
             <option value="Principle Design Engineer">Principle Design Engineer</option>
             <option value="Design Manager">Design Manager</option>
             <option value="Project Construction Manager">Project Construction Manager</option>
@@ -32,11 +32,11 @@
             <option value="Project Design Engineer">Project Design Engineer</option>
             <option value="Quality Manager">Quality Manager</option>
             <option value="Graduate Field Engineer (EIT)">Graduate Field Engineer (EIT)</option>
-            <option value="Technician/Drafter">Technician/Drafter</option>
+            <option value="Technician-Drafter">Technician/Drafter</option>
             <option value="Clerk/Office Admin">Clerk/Office Admin</option>
           </select><br>
           <br>
-          <button type="submit" onclick="graph_generator()" form="">Generate graph</button>
+          <button type="submit" onclick="graph_generator(document.getElementById('job selection').value)" form="">Generate graph</button>
           <input id="job" name="job" type="hidden" required><br>
           <input id="in/out" name="in/out" type="hidden"><br>
         </form>

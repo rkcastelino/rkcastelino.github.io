@@ -1,4 +1,4 @@
-function graph_generator(){
+function graph_generator(category){
   // set the dimensions and margins of the graph
   var margin = {top: 10, right: 30, bottom: 30, left: 60},
       width = 460 - margin.left - margin.right,
@@ -14,11 +14,11 @@ function graph_generator(){
             "translate(" + margin.left + "," + margin.top + ")");
 
   //Read the data
-  d3.csv("out.csv",
+  d3.csv("Data Conglomeration/Files/jobs/" + category + ".csv",
 
     // When reading the csv, I must format variables:
     function(d){
-      return { date : d3.timeParse("%d/%m/%Y")(d.date), value : d.value }
+      return { date : d3.timeParse("%m/%d/%Y")(d.date), value : d.cum_hours }
     },
 
     // Now I can use this dataset:
