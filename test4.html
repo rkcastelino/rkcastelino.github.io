@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<style>
+div.scrollbarsetting{
+  overflow: hidden;
+}
+.TL{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width:calc(var(--screenWidth)*0.424);
+  height:calc((var(--screenHeight) - 0.255*var(--screenWidth))/2);
+}
+.TR{
+  position: absolute;
+  top: 0px;
+  left: calc(var(--screenWidth)*0.424);
+  width: calc(0.577*var(--screenWidth) - 1px);
+  height:calc((var(--screenHeight) - 0.255*var(--screenWidth))/2);
+}
+.pic {
+  position: absolute;
+  top: calc((var(--screenHeight) - 0.255*var(--screenWidth))/2);
+  left: 0;
+  width:calc(var(--screenWidth)*0.424);
+  height:calc(0.255*var(--screenWidth));
+}
+.R{
+  position: absolute;
+  top: calc((var(--screenHeight) - 0.255*var(--screenWidth))/2);
+  left: calc(var(--screenWidth)*0.424);
+  width: calc(0.577*var(--screenWidth) - 1px);
+  height:calc(0.255*var(--screenWidth));
+}
+.BL{
+  position: absolute;
+  top: calc(calc((var(--screenHeight) - 0.255*var(--screenWidth))/2) + calc(0.255*var(--screenWidth)));
+  left: 0;
+  width:calc(var(--screenWidth)*0.424);
+  height:calc((var(--screenHeight) - 0.255*var(--screenWidth) - 1px)/2);
+}
+.BR{
+  position: absolute;
+  top: calc(calc((var(--screenHeight) - 0.255*var(--screenWidth))/2) + calc(0.255*var(--screenWidth)));
+  left: calc(var(--screenWidth)*0.424);
+  width: calc(0.577*var(--screenWidth) - 1px);
+  height: calc((var(--screenHeight) - 0.255*var(--screenWidth) - 1px)/2);
+}
+.preload{
+  visibility: hidden;
+}
+</style>
+</head>
+<body>
+<div class="scrollbarsetting">
+  <img class="TL preload" src=walkingScaleUp150SliceTL.gif>
+  <img class="TR preload" src=walkingScaleUp150SliceTR.gif>
+  <img class="pic preload" src=walkingScale150SlicePrimary.gif>
+  <img class="R preload" src=walkingScaleUp150SliceR.gif>
+  <img class="BL preload" src=walkingScaleUp150SliceBL.gif>
+  <img class="BR preload" src=walkingScaleUp150SliceBR.gif>
+</div>
+</body>
+<script>
+  let root = document.documentElement;
+
+  window.addEventListener("load", e => {
+    root.style.setProperty('--screenWidth', window.innerWidth + "px");
+    root.style.setProperty('--screenHeight', window.innerHeight + "px");
+  })
+
+  window.addEventListener("resize", e => {
+    root.style.setProperty('--screenWidth', window.innerWidth + "px");
+    root.style.setProperty('--screenHeight', window.innerHeight + "px");
+  })
+
+</script>
+<script>
+$(window).load(function() {
+    $('.preload').attr('src', function(i,a){
+        $(this).attr('src','')
+            .removeClass('preload')
+            .attr('src',a);
+    });
+});
+window.onblur= function() {window.onfocus= function () {location.reload(true)}};
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+:root {
+  --screenwidth: 300px;
+  --screenheight: 300px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 42.4vw auto;
+  grid-template-rows: auto auto auto;
+  background-color: #2196F3;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  font-size: 30px;
+  text-align: center;
+}
+.picwidth {
+  width: var(--screenwidth);
+}
+</style>
+</head>
+<body>
+
+<div class="grid-container">
+  <div class="grid-item">
+    <p id="screenwidth">TL</p>
+  </div>
+  <div class="grid-item">
+    TR
+  </div>
+  <div class="grid-item">
+    <img src=walkingScale150SlicePrimary.gif class=picwidth>
+  </div>
+  <div class="grid-item">
+    R
+  </div>
+  <div class="grid-item">
+    BL
+  </div>
+  <div class="grid-item">
+    BR
+  </div>
+</div>
+
+</body>
+
+<script>
+let root = document.documentElement;
+
+root.addEventListener('resize', e => {
+  root.style.setProperty('--screenwidth', window.screenX + "px");
+  document.getElementById("screenwidth").innerHTML = "Hellow World"
+})
+
+</script>
+</html>
